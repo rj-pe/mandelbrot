@@ -30,7 +30,7 @@ void PPMFile::writeHeader()
     //string header = ;
     image<<"P6\n"
                 <<priv_width << " "<<priv_height<<"\n"
-                <<priv_maxColorValue;
+                <<priv_maxColorValue<<endl;
 }
 
 // 3. writePixel takes a pixel type as an argument and writes the r, g, and b values to the
