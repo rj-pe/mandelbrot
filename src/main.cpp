@@ -23,7 +23,7 @@ int main()
     int iteration = 0;
     double cx, cy;
 
-    //ComplexNumber x, last, plusOne;
+    ComplexNumber x, last, plusOne;
 
     PPMFile myImage(600, 400); //create a PPMFile instance in the stack, pass in width and height
     pixel green; 
@@ -43,13 +43,11 @@ int main()
 
     myImage.setFileName(fileName);
     myImage.openFile();
-    //myImage.setHeight(height);
-    //myImage.setWidth(width);
     myImage.writeHeader();
     cout << "Number of pixels to write is " << myImage.getNumPixels() << endl;
 
 
- /*   for (iy=1; iy <= height; iy++) {
+ for (iy=1; iy <= height; iy++) {
         cy = cymin + (iy - 1)*pixelheight;
         if (abs(cy) < pixelheight / 2)
             cy = 0.0;
@@ -71,7 +69,7 @@ int main()
                     myImage.writePixel(blue);
 
         }
-    }*/
+ }
 
     myImage.closeFile();
 
