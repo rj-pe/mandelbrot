@@ -12,7 +12,7 @@ using namespace std;
 class ComplexNumber 
 {
  public:
-    ComplexNumber(double real = 0, double imag = 0);
+    ComplexNumber(double real = 0.0, double imag = 0.0);
 
     ComplexNumber(const ComplexNumber &obj);
 

@@ -55,7 +55,7 @@ int main()
                 iteration = 0;
                 cx = cxmin + (ix - 1) * pixelwidth;
                 x.set(cx , cy);
-                last.set(0.0,0.0);
+                last.set(0.5,0.5);
 
                 do {
                     plusOne = last * last + x;
