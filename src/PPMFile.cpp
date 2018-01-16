@@ -21,14 +21,14 @@ PPMFile::PPMFile()
 PPMFile::PPMFile(int width, int height) 
     : priv_width(width), priv_height(height), priv_pixelsWritten(0),priv_maxColorValue(255)
 { 
-    int priv_numPixels = priv_width * priv_height;
+    priv_numPixels = width * height;
 }
 
 // 2. WriteHeader writes "P6", newline, width, " ", height, newline, and the maxColorValue
 void PPMFile::writeHeader()
 {
     //string header = ;
-    image<<"P6\n"
+    priv_image<<"P6\n"
                 <<priv_width << " "<<priv_height<<"\n"
                 <<priv_maxColorValue<<endl;
 }
@@ -44,31 +44,39 @@ void PPMFile::writePixel(pixel ip)
         unsigned char three[] = {ip.r, ip.g, ip.b};
         const unsigned int three_length = 3;
         string input (three, three + three_length);
-        image << input;
+        priv_image << input;
         priv_pixelsWritten ++;
     }
 }
 // 4. getNumPixels returns the total number of pixels which is the width times
 // the height
+void PPMFile::setNumPixels(int width, int height)
+{
+    priv_numPixels = width * height;
+}
 const int& PPMFile::getNumPixels()
 {
-    if (priv_numPixels == 0) {return priv_numPixels = priv_width * priv_height;}
+    if (priv_numPixels == 0) 
+        {
+            this->setNumPixels(priv_width, priv_height);
+            return priv_numPixels;
+        }
     else {return priv_numPixels;}
 }
 // 5. openFile opens the file name, but uses the c_str attribute 
 void PPMFile::openFile()
 {
-    image.open( objectFileName.data() );    
+    priv_image.open( priv_objectFileName.data() );    
 }
 //closes the file
 void PPMFile::closeFile()
 {
-    image.close();
+    priv_image.close();
 }
 // 6. setter for the file name
 void PPMFile::setFileName(string fileName)
 {
-    objectFileName = fileName;
+    priv_objectFileName = fileName;
 }
 // 7. setter for the Width
 void PPMFile::setWidth(int width)
@@ -87,4 +95,8 @@ const int& PPMFile::getWidth()
 const int& PPMFile::getHeight()
 {
     return priv_height;
+}
+const string& PPMFile::getFileName()
+{
+    return priv_objectFileName;
 }

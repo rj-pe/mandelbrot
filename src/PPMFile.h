@@ -17,13 +17,7 @@ struct pixel
 
 class PPMFile
 {
-        private:
-        std::string objectFileName;
-        int priv_width;
-        int priv_height;
-        int priv_pixelsWritten=0;
-        int priv_maxColorValue=0;
-        int priv_numPixels=0;
+        
     public:
         PPMFile();
         PPMFile(int, int);
@@ -32,13 +26,23 @@ class PPMFile
         void setHeight(int height);  
         const int& getHeight();
         void setFileName(string fileName);
+        const string& getFileName();
+        void setNumPixels(int width, int height);
+        const int& getNumPixels();
+                
         void openFile();
         void closeFile();     
         void writeHeader();
         void writePixel(pixel ip);
-        const int& getNumPixels();
-        std::ofstream image;
         
+    private:
+        std::string priv_objectFileName;
+        int priv_width;
+        int priv_height;
+        int priv_pixelsWritten;
+        int priv_maxColorValue;
+        int priv_numPixels;
+        std::ofstream priv_image;
 };
 
 #endif

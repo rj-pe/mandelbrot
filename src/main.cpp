@@ -74,6 +74,6 @@ int main()
 }
     myImage.closeFile();
     cout << "Finished generating mandelbrot in the following file!" << endl;
-    cout << fileName << endl;
+    cout << myImage.getFileName() << endl;
     return 0;
 }
