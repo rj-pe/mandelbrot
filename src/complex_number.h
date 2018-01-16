@@ -1,6 +1,5 @@
 #ifndef COMPLEX_NUMBER_H
 #define COMPLEX_NUMBER_H
-
 #include <iostream>
 #include <cmath>
 #include <fstream>
@@ -19,7 +18,7 @@ class ComplexNumber
     friend ComplexNumber operator+ (const ComplexNumber &a, const ComplexNumber &b);
     friend ComplexNumber operator* (const ComplexNumber &a, const ComplexNumber &b);
 
-    friend ostream&      operator<<(ostream &out, const ComplexNumber &c);
+    friend ostream& operator<<(ostream &out, const ComplexNumber &c);
 
     ComplexNumber square();
     double magnitude();

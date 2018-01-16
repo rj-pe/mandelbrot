@@ -30,6 +30,31 @@ ComplexNumber operator* (const ComplexNumber &a, const ComplexNumber &b)
     result.i = (a.r * b.i) + (a.i * b.r);
     return result;
 }
+
+ComplexNumber::ComplexNumber(const ComplexNumber &obj) 
+{
+    cout << "Calling copy constructor!" << endl;
+    this->r = obj.r;
+    this->i = obj.i;
+}
+// 9. magnitude method to get the magnitued of the complex number
+double ComplexNumber::magnitude()
+{
+    return sqrt( (pow( this->r, 2 ) )+( pow(this->i, 2 ) ));
+}
+
+void ComplexNumber::set(double ri, double ii) 
+{
+    r = ri;
+    i = ii;
+}
+//10. override the stream operator for the ComplexNumber
+ostream& operator<< (ostream &out, const ComplexNumber &c)
+{
+    out << "("<<c.r<< ","<< c.i<<")"<<endl;
+    return out;
+}
+
 // 11. square method for the complex number that returns the square
 ComplexNumber ComplexNumber::square()
 {
@@ -38,25 +63,3 @@ ComplexNumber ComplexNumber::square()
     result.i=( this->r * this->i ) + ( this->i * this->r );
     return result;
 }
-
-// 10. override the stream operator for the ComplexNumber
-/**ComplexNumber operator << (ostream &out, const ComplexNumber &c)
-{
-    out << c.r << " + " << c.i << "i";
-}*/
-ComplexNumber::ComplexNumber(const ComplexNumber &obj) {
-    cout << "Calling copy constructor!" << endl;
-    this->r = obj.r;
-    this->i = obj.i;
-}
-
-// 9. magnitude method to get the magnitued of the complex number
-double ComplexNumber::magnitude()
-{
-    return sqrt( (pow( this->r, 2 ) )+( pow(this->i, 2 ) ));
-}
-
-   void ComplexNumber::set(double ri, double ii) {
-    r = ri;
-    i = ii;
-   }

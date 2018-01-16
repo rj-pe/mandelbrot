@@ -11,8 +11,8 @@ using namespace std;
 // 1. Constructor that sets width, height, and pixelsWritten to zero. Set
 //    maxColorValue to 255
 //  default constructor
-/*PPMFile::PPMFile()   = default;
-    : priv_width(0), priv_height(0), priv_pixelsWritten(0), priv_maxColorValue(255), priv_numPixels(0) {}*/
+PPMFile::PPMFile()  
+    : priv_width(0), priv_height(0), priv_pixelsWritten(0), priv_maxColorValue(255), priv_numPixels(0) {}
     
 /**constructor 
  *  @param wth sets the number of pixels across
@@ -42,7 +42,7 @@ void PPMFile::writePixel(pixel ip)
     if(priv_pixelsWritten <= priv_numPixels)
     {
         unsigned char three[] = {ip.r, ip.g, ip.b};
-        unsigned int three_length = 3;
+        const unsigned int three_length = 3;
         string input (three, three + three_length);
         image << input;
         priv_pixelsWritten ++;
@@ -58,7 +58,7 @@ const int& PPMFile::getNumPixels()
 // 5. openFile opens the file name, but uses the c_str attribute 
 void PPMFile::openFile()
 {
-    image.open( objectFileName.data());    
+    image.open( objectFileName.data() );    
 }
 //closes the file
 void PPMFile::closeFile()
