@@ -25,11 +25,12 @@ int main()
 
     ComplexNumber x, last, plusOne;
 
-    PPMFile myImage(600, 400); //create a PPMFile instance in the stack, pass in width and height
+    PPMFile myImage(600, 400);             //create a PPMFile instance in the stack, pass in width and height
     pixel green; 
     pixel blue;
-    int width = myImage.getWidth();
+    int width = myImage.getWidth(); 
     int height = myImage.getHeight();
+    
     green.r = 0;
     green.g = 255;
     green.b = 0;
@@ -55,27 +56,24 @@ int main()
                 iteration = 0;
                 cx = cxmin + (ix - 1) * pixelwidth;
                 x.set(cx , cy);
-                last.set(0.5,0.5);
+                last.set(0,0);
 
                 do {
                     plusOne = last * last + x;
                     last = plusOne;
                     iteration++;
+                    
                 } while (iteration < maxiteration && plusOne.magnitude() < escapeRadius);
 
                 if (iteration == maxiteration)
                     myImage.writePixel(green);
+                    
                 else
                     myImage.writePixel(blue);
-
         }
- }
-
+}
     myImage.closeFile();
-
     cout << "Finished generating mandelbrot in the following file!" << endl;
-    cout << fileName << endl;
-
+    cout << myImage.getFileName() << endl;
     return 0;
-
 }

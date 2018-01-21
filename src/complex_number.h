@@ -9,25 +9,29 @@
 
 using namespace std;
 
-class ComplexNumber 
+class ComplexNumber
 {
  public:
-    ComplexNumber(double real = 0.0, double imag = 0.0);
+    ComplexNumber()
+      : realPart(0.0), imagPart(0.0) {}
+
+    ComplexNumber(double real, double imag)
+          : realPart(real), imagPart(imag) {}
 
     ComplexNumber(const ComplexNumber &obj);
 
     friend ComplexNumber operator+ (const ComplexNumber &a, const ComplexNumber &b);
     friend ComplexNumber operator* (const ComplexNumber &a, const ComplexNumber &b);
 
-    friend ostream&      operator<<(ostream &out, const ComplexNumber &c);
+    friend ostream& operator<<(ostream &out, const ComplexNumber &c);
 
     ComplexNumber square();
     double magnitude();
-    void set(double ri, double ii);
+    void set(double real, double imag);
 
  private:
-    double r;
-    double i;
+    double realPart;
+    double imagPart;
 };
 
 #endif

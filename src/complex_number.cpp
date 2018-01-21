@@ -9,54 +9,54 @@
 using namespace std;
 
 
-ComplexNumber::ComplexNumber(double rr, double ii) 
-    : r(rr), i(ii) 
-{
-}
-
 // 13. Override the operator+ for the ComplexNumber
 ComplexNumber operator+ (const ComplexNumber &a, const ComplexNumber &b)
 {
     ComplexNumber result;
-    result.r = a.r + b.r;
-    result.i = a.i + b.i;
+    result.realPart = a.realPart + b.realPart;
+    result.imagPart = a.imagPart + b.imagPart;
     return result;
 }
 // 12. override the operator* for the Complex Number
 ComplexNumber operator* (const ComplexNumber &a, const ComplexNumber &b)
 {
     ComplexNumber result;
-    result.r = (a.r * b.r) - (a.i * b.i);
-    result.i = (a.r * b.i) + (a.i * b.r);
+    result.realPart = (a.realPart * b.realPart) - (a.imagPart * b.imagPart);
+    result.imagPart = (a.realPart * b.imagPart) + (a.imagPart * b.realPart);
     return result;
 }
+
+ComplexNumber::ComplexNumber(const ComplexNumber &obj)
+{
+    cout << "Calling copy constructor!" << endl;
+    this->realPart = obj.realPart;
+    this->imagPart = obj.imagPart;
+}
+// 9. magnitude method to get the magnitued of the complex number
+double ComplexNumber::magnitude()
+{
+    return sqrt( (pow( this->realPart, 2 ) )+( pow(this->imagPart, 2 ) ));
+}
+
+void ComplexNumber::set(double real, double imag)
+{
+    realPart = real;
+    imagPart = imag;
+}
+//10. override the stream operator for the ComplexNumber
+ostream& operator<< (ostream &out, const ComplexNumber &c)
+{
+    out << "("<<c.realPart<< ","<< c.imagPart<<")"<<endl;
+    return out;
+}
+
 // 11. square method for the complex number that returns the square
 ComplexNumber ComplexNumber::square()
 {
     ComplexNumber result;
-    result.r=( this->r*this->r )-( this->i*this->i );
-    result.i=( this->r * this->i ) + ( this->i * this->r );
+    result.realPart   =   (this->realPart * this->realPart)
+                      -   (this->imagPart * this->imagPart);
+    result.imagPart = (this->realPart * this->imagPart)
+                                + (this->imagPart * this->realPart);
     return result;
 }
-
-// 10. override the stream operator for the ComplexNumber
-/**ComplexNumber operator << (ostream &out, const ComplexNumber &c)
-{
-    out << c.r << " + " << c.i << "i";
-}*/
-ComplexNumber::ComplexNumber(const ComplexNumber &obj) {
-    cout << "Calling copy constructor!" << endl;
-    this->r = obj.r;
-    this->i = obj.i;
-}
-
-// 9. magnitude method to get the magnitued of the complex number
-double ComplexNumber::magnitude()
-{
-    return sqrt( (pow( this->r, 2 ) )+( pow(this->i, 2 ) ));
-}
-
-   void ComplexNumber::set(double ri, double ii) {
-    r = ri;
-    i = ii;
-   }
