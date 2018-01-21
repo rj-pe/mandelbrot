@@ -13,11 +13,7 @@ class ComplexNumber
 {
  public:
     ComplexNumber()
-<<<<<<< HEAD
       : realPart(0.0), imagPart(0.0) {}
-=======
-      : realPart(MIN), imagPart(MIN) {}
->>>>>>> develop
 
     ComplexNumber(double real, double imag)
           : realPart(real), imagPart(imag) {}
@@ -36,10 +32,6 @@ class ComplexNumber
  private:
     double realPart;
     double imagPart;
-<<<<<<< HEAD
-=======
-    static constexpr double MIN = 0.0;
->>>>>>> develop
 };
 
 #endif

@@ -16,11 +16,6 @@ struct pixel
 public:
     const string writePixel();
     unsigned char r,g,b;
-    const unsigned int three_length = 3;
-    int i=0;
-    public:
-    const string& writePixel();
-    unsigned char three[];
 };
 
 class PPMFile
