@@ -5,24 +5,9 @@
 #include <string>
 #include "PPMFile.h"
 
+
+
 using namespace std;
-
-
-// 1. Constructor that sets width, height, and pixelsWritten to zero. Set
-//    maxColorValue to 255
-//  default constructor
-PPMFile::PPMFile()  
-    : priv_width(0), priv_height(0), priv_pixelsWritten(0), priv_maxColorValue(255), priv_numPixels(0) {}
-    
-/**constructor 
- *  @param wth sets the number of pixels across
- *  @param hht sets the number of pixels down
- */
-PPMFile::PPMFile(int width, int height) 
-    : priv_width(width), priv_height(height), priv_pixelsWritten(0),priv_maxColorValue(255)
-{ 
-    priv_numPixels = width * height;
-}
 
 // 2. WriteHeader writes "P6", newline, width, " ", height, newline, and the maxColorValue
 void PPMFile::writeHeader()
@@ -41,11 +26,8 @@ void PPMFile::writePixel(pixel ip)
 {
     if(priv_pixelsWritten <= priv_numPixels)
     {
-        unsigned char three[] = {ip.r, ip.g, ip.b};
-        const unsigned int three_length = 3;
-        string input (three, three + three_length);
-        priv_image << input;
-        priv_pixelsWritten ++;
+        priv_image << ip.writePixel();
+        priv_pixelsWritten ++;  
     }
 }
 // 4. getNumPixels returns the total number of pixels which is the width times
@@ -99,4 +81,11 @@ const int& PPMFile::getHeight()
 const string& PPMFile::getFileName()
 {
     return priv_objectFileName;
+}
+const string pixel::writePixel()
+{
+        unsigned char three[] = {this->r, this->g, this->b}; 
+        const unsigned int three_length = 3; 
+        string input (three, three + three_length); 
+        return input;
 }

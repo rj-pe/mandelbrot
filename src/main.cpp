@@ -47,6 +47,7 @@ int main()
     myImage.writeHeader();
     cout << "Number of pixels to write is " << myImage.getNumPixels() << endl;
 
+
  for (iy=1; iy <= height; iy++) {
         cy = cymin + (iy - 1)*pixelheight;
         if (abs(cy) < pixelheight / 2)
@@ -55,13 +56,12 @@ int main()
                 iteration = 0;
                 cx = cxmin + (ix - 1) * pixelwidth;
                 x.set(cx , cy);
-                last.set(0.7,0.5);
+                last.set(0,0);
 
                 do {
                     plusOne = last * last + x;
                     last = plusOne;
                     iteration++;
-                    //cout << plusOne;
                     
                 } while (iteration < maxiteration && plusOne.magnitude() < escapeRadius);
 
